@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  /* Remove the previous
   state = {
     name: 'Johnny',
     age: 21
@@ -20,17 +22,27 @@ class App extends Component {
       age: --this.state.age
     })
   }
+  */
 
   render() {
     return (
       <div className="App">
-        <div>Age: <span>{this.state.age}</span></div>
-        <div>Name: <span>{this.state.name}</span></div>
-        <button onClick={this.onAgeUp}>Age Up</button>
-        <button onClick={this.onAgeDown}>Age Down</button>
+        <div>Age: <span>{this.props.age}</span></div>
+        <div>Name: <span>{this.props.name}</span></div>
+        <button onClick={this.props.onAgeUp}>Age Up</button>
+        <button onClick={this.props.onAgeDown}>Age Down</button>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({age: state.age})
+
+const mapDispatchToProps = (dispatch)  => {
+  return {
+    onAgeUp: () => dispatch({type: 'AGE_UP'}),
+    onAgeDown: () => dispatch({type: 'AGE_DOWN'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
