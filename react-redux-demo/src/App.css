@@ -22,6 +22,14 @@
   color: #61dafb;
 }
 
+.historyItem {
+  list-style-type: none;
+  border: 1px solid #f9e5ad;
+  margin: 10px;
+  padding: 0 10px;
+  background-color: #f7e8bc70
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
